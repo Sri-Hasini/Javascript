@@ -1,0 +1,270 @@
+<html>
+    <head>
+        <title>Practice 1 using html</title>
+    </head>
+    <body>
+        <!-- hovering effect using inline js -->
+        <button onmouseover="alert('Hello!')">Hover me</button>
+
+        <!-- clicking effect using inline js -->
+        <button onclick="greet()">Click me</button>
+
+        <!-- changing paragraph using internal js -->
+        <script>
+            function greet() {
+              alert('Hello from internal JS!');
+            }
+        </script><br>
+        <p id="demo">Hey this is my first class in JS</p>
+
+        <!-- changing color of the bulb using js -->
+        <button onclick='document.getElementById("demo").innerHTML = "Hello JS!"'>Click me to change the above para</button><hr>
+        <button onclick="document.getElementById('my_image').src='images/bulbon.png'; document.getElementById('my_image').style.width='200px';">Click me to turn on the light</button>
+        <img id = "my_image" src="images/bulboff2.png" width="180px" style="background-color: black;">
+        <button onclick="document.getElementById('my_image').src='images/bulboff2.png'; document.getElementById('my_image').style.width='180px';">Click me to turn off the light</button>
+        <br><br>
+        <hr>
+
+        <!-- used == operator in js -->
+        <p id="output1"></p>
+        <script>
+            document.getElementById('output1').innerHTML=(5=="5");
+        </script>
+        <hr>
+
+        <!-- used === operator in js -->
+        <p id="output2"></p>
+        <script>
+            document.getElementById('output2').innerHTML=(5==="5");
+        </script>
+        <hr>
+
+        <!-- seen how we can manipulate text using internal js -->
+        <p id="output">Original text</p>
+        <script>
+        document.getElementById('output').innerHTML = 'New text output!';
+        </script>
+        <hr>
+
+        <!-- used for loop in js -->
+        <p id="output3"></p>
+        <script>
+            function getnums(){
+                let res="";
+                for(let i = 0; i < 5; i++) {
+                    res += i;
+                    res += "<br>";
+                }
+                return res;
+            }
+            document.getElementById('output3').innerHTML = getnums();
+        </script>
+        <hr>
+
+        <!-- used conditional statements in js -->
+        <p id="output4"></p>
+        <script>
+            function checking() {
+                let res="";
+                let val = 100;
+                if (val > 90 && val <= 100) res = "Your grade is A, well done!";
+                else if (val > 80 && val <= 90) res = "Your grade is B, Good!";
+                else if (val > 70 && val <= 80) res = "Your grade is C, Average!";
+                else if (val > 60 && val <= 70) res = "Your grade is D, Poor!";
+                else if (val > 50 && val <= 60) res = "Your grade is E, Bad!";
+                else res = "Your grade is F, Failed!";
+                return res;
+            }
+            document.getElementById('output4').innerHTML=checking();
+        </script>
+        <hr>
+
+        <!-- used switch statement in js -->
+        <p id="output5"></p>
+        <script>
+            function working() {
+                let res="";
+                let val = "guava";
+                switch(val) {
+                    case "mango": res="Mango is yellow in colour!";
+                        break;
+                    case "banana": res="Banana is yellow in color!";
+                        break;
+                    case "orange": res="Orange is orange in colour!";
+                        break;
+                    case "guava": res="Guava is green in colour!";
+                        break;
+                    default: res="Sorry! Not found!";
+                        break;
+                }
+                return res;
+            }
+            document.getElementById('output5').innerHTML=working();
+        </script>
+        <hr>
+
+        <!-- Function declaration -->
+
+            <!-- displaying console, you can click "Ctrl + shift + J" to view in webpage-->
+            <script>
+            function greet(name) {
+                return "Hello, " + name + "! By Console";
+            }
+            console.log(greet("Hasini")); 
+            </script>
+
+            <!-- displaying in webpage -->
+            <p id="output6"></p>
+            <script>
+                function greet(name) {
+                    return "Hello " + name + "!";
+                }
+                document.getElementById('output6').innerHTML=greet("Hasini");
+            </script>
+        <hr>
+
+        <!-- Function expression -->
+            <!-- displaying in console -->
+            <script>
+                const add = function(a, b) {
+                    return a + b;
+                }
+                console.log(add(5, 4));
+            </script>
+            
+            <!-- displaying in webpage -->
+            <p id="output7"></p>
+            <script>
+                const add1 = function(a, b) {
+                    return a + b;
+                }
+                document.getElementById('output7').innerHTML=add1(5, 4);
+            </script>
+        <hr>
+
+        <!-- Arrow function -->
+            <!-- displaying in console -->
+            <script>
+                const mul = (a, b) => a * b;
+                console.log(mul(5, 4));
+            </script>
+            
+            <!-- displaying in webpage -->
+            <p id="output8"></p>
+            <script>
+                const mul1 = (a, b) => a * b;
+                document.getElementById('output8').innerHTML=mul1(5, 4);
+            </script>
+        <hr>
+
+        <!-- Objects -->
+            <!-- displaying in console -->
+            <script>
+                let person = {
+                    firstname: "Sri hasini",
+                    lastname: "Sripada",
+                    age: 17,
+                    greet: function() {
+                        return "Hello " + this.firstname + "!";
+                    }
+                }; // keep semicolon at the ending of the object
+                console.log(person.greet());
+            </script>
+            <script>
+                console.log(person.age);
+                console.log(person.lastname);
+                person.age = 18;
+                console.log(person.age);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output9"></p>
+            <script>
+                let res="";
+                res = person.greet() + "<br>" + person.firstname + " " + person.lastname + " is having age " + person.age + ".";
+                document.getElementById('output9').innerHTML = res;
+            </script>
+        <hr>
+
+        <!-- Arrays  -->
+            <!-- displaying in console -->
+            <script>
+                let fruits=["apple", "banana", "mango", "guava", "grapes", "water melon"];
+                console.log(fruits[0] + ", " + fruits[2] + ", " + fruits[5]);
+                // pushing at the end 
+                fruits.push("custard apple");
+                console.log(fruits);
+                // popping from the end
+                fruits.pop();
+                console.log(fruits);
+                // using forEach to iterate and retrieve the elements
+                fruits.forEach(function(fruit, index) {
+                    console.log(index, fruit);
+                });
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output10"></p>
+            <script>
+                let res1="";
+                res1 = fruits[0] + ", " + fruits[2] + ", " + fruits[5] + "<br>";
+                fruits.push("custard apple");
+                res1 += fruits + "<br>";
+                fruits.pop();
+                res1 += fruits + "<br>";
+                fruits.forEach(function(fruit, index) {
+                    res1 += index + " - " + fruit + "<br>";
+                });
+                res1 += "<br>" + "Using <b>arrayname.join(separator)</b> we can make the array into string and can now assign this to our variable, Like this:<br>" + fruits.join(", ");
+                document.getElementById('output10').innerHTML = res1;
+            </script>
+        <hr>
+
+        <!-- Strings -->
+            <!-- displaying in console -->
+            <script>
+                let str = "Hello, javascript!"
+                console.log(str.length); // to find length of the string
+                
+                // string methods
+                console.log("Converting to uppercase = " + str.toUpperCase());
+                console.log("Converting to lowecase = " + str.toLowerCase());
+                console.log("Finding the first index of java in the string = " + str.indexOf('java'));
+                console.log("Generating substring from 7 to 18(means less than 18) = " + str.slice(7, 18));
+                console.log("Returns character at specific index = " + str.charAt(0));
+                let fname = "Hello";
+                let lname = "Sri Hasini";
+                console.log("Concatinates second string at the last of first one = " + fname.concat(", ", lname, "!"));
+                console.log("Checks whether given substring is present or not in the main string = " + str.includes("Java"));
+                console.log("replaces some or all matches of a given old substring into a new one = " + str.replace("javascript", "Hasini"));
+                let word = str.split(" ");//splits based on spaces
+                console.log("Splits based on spaces and return array = " + word);
+                let name1 = "   heroine   ";
+                console.log("trims white spaces from both the ends = " + name1.trim());
+                console.log("returns substring, similar to slice but cant accept negative values = " + str.substring(7, 17));
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output11"></p>
+            <script>
+                let res2="";
+                res2 += "Length of the string " + str.length + "<br>"; // to find length of the string
+                
+                // string methods
+                res2 += "Converting to uppercase = " + str.toUpperCase() + "<br>";
+                res2 += "Converting to lowecase = " + str.toLowerCase() + "<br>";
+                res2 += "Finding the first index of java in the string = " + str.indexOf('java') + "<br>";
+                res2 += "Generating substring from 7 to 18(means less than 18) = " + str.slice(7, 18) + "<br>";
+                res2 += "Returns character at specific index = " + str.charAt(0) + "<br>";
+                res2 += "Concatinates second string at the last of first one = " + fname.concat(", ", lname, "!") + "<br>";
+                res2 += "Checks whether given substring is present or not in the main string = " + str.includes("Java") + "<br>";
+                res2 += "replaces some or all matches of a given old substring into a new one = " + str.replace("javascript", "Hasini") + "<br>";
+                res2 += "Splits based on spaces and return array = " + word + "<br>";
+                res2 += "trims white spaces from both the ends = " + name1.trim() + "<br>";
+                res2 += "returns substring, similar to slice but cant accept negative values = " + str.substring(7, 17) + "<br>";
+                document.getElementById('output11').innerHTML=res2;
+            </script>
+        <hr>
+        
+    </body>
+</html>
