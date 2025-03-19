@@ -208,14 +208,32 @@
             <script>
                 let res1="";
                 res1 = fruits[0] + ", " + fruits[2] + ", " + fruits[5] + "<br>";
-                fruits.push("custard apple");
+                fruits.push("custard apple");//pushes an element at the end and changes the original array
                 res1 += fruits + "<br>";
-                fruits.pop();
+                fruits.unshift("jack fruit", "pine apple");// adds elements at the beginning
                 res1 += fruits + "<br>";
+                fruits.pop();//removes the last element
+                res1 += fruits + "<br>";
+                fruits.shift();//removes the first element
+                res1 += fruits + "<br>";
+                // arrayname.slice(startindex, endindex);
+                res1 += "Generating subarray from 2 to 4(means less than 4) = " + fruits.slice(2) + "<br>";
+                // returns a new sub array and doesnt mutate our original array, if second value isnt passed it includes elements upto end
+                let movies = ['shershah', 'vikram', 'kgf', 'RRR'];
+                // arrayname.splice(startindex, deletecount, replacement);
+                movies.splice(1, 1, "Jai Bheem");// if we keep 3rd parameter, it will replace the selected range with the given value
+                res1 += movies + "<br>"; 
+                movies.splice(1, 2);// Used to delete certain range from the main array(mutated) and delete the number of elements
+                res1 += movies + "<br>";
+                movies.splice(1, 0, "Jigra");//used to delete 0 elements from 1th index or if the first value is larger than size it will essentially add at the end and add "Jigra" at that position
+                res1 += movies + "<br>";
+                movies.forEach(name => res1 += name + " ");
+                res1 += "<br>";
+                res1 += movies.some(film => film === "Jigra") + "<br>";//some is used to find whether we have any of the array element satisfying our condition
                 fruits.forEach(function(fruit, index) {
                     res1 += index + " - " + fruit + "<br>";
                 });
-                res1 += "<br>" + "Using <b>arrayname.join(separator)</b> we can make the array into string and can now assign this to our variable, Like this:<br>" + fruits.join(", ");
+                res1 += "<br>" + "Using <b>arrayname.join(separator)</b> we can make the array into string and can now assign this to our variable, Like this:<br>" + fruits.join(" * ");
                 document.getElementById('output10').innerHTML = res1;
             </script>
         <hr>
@@ -237,8 +255,9 @@
                 console.log("Concatinates second string at the last of first one = " + fname.concat(", ", lname, "!"));
                 console.log("Checks whether given substring is present or not in the main string = " + str.includes("Java"));
                 console.log("replaces some or all matches of a given old substring into a new one = " + str.replace("javascript", "Hasini"));
-                let word = str.split(" ");//splits based on spaces
-                console.log("Splits based on spaces and return array = " + word);
+                let word = str.split(" ");//splits based on pattern given in the (""), if space is given, it will divide by the spaces
+
+                console.log("Splits based on spaces and return array= " + word);
                 let name1 = "   heroine   ";
                 console.log("trims white spaces from both the ends = " + name1.trim());
                 console.log("returns substring, similar to slice but cant accept negative values = " + str.substring(7, 17));
@@ -259,12 +278,149 @@
                 res2 += "Concatinates second string at the last of first one = " + fname.concat(", ", lname, "!") + "<br>";
                 res2 += "Checks whether given substring is present or not in the main string = " + str.includes("Java") + "<br>";
                 res2 += "replaces some or all matches of a given old substring into a new one = " + str.replace("javascript", "Hasini") + "<br>";
-                res2 += "Splits based on spaces and return array = " + word + "<br>";
+                res2 += "Splits based on spaces and return array, now i printed the string at 1st index = " + word[1] + "<br>";
                 res2 += "trims white spaces from both the ends = " + name1.trim() + "<br>";
-                res2 += "returns substring, similar to slice but cant accept negative values = " + str.substring(7, 17) + "<br>";
+                res2 += "returns substring, similar to slice but cant accept negative values = " + str.substring(7, 17) + "<br><br>";
+                let array1 = [1, 2, 3];
+                let array2 = [4, 5, 6];
+                let array3 = [7, 8, 9, 10];
+                let newarray = array1.concat(array2, array3);
+                res2 += "lets concat 2 arrays, it will concat 3 arrays and return a new array, doesn't mutate any old array : " + array1 + " gets concatenated with " + array2 + " and  " + array3 + " and produces a new arrya = " + newarray + "<br>";
+
                 document.getElementById('output11').innerHTML=res2;
             </script>
         <hr>
         
+        <!-- map -->
+            <!-- displaying in console -->
+            <script>
+                //it will just make the suitable changes and creates a new array and stores there
+                let val2025 = [17, 12, 47, 48, 69, 77];
+                let val2023 = val2025.map(age => age - 2);
+                console.log(val2023); 
+                let housemates2025 = [
+                    {
+                        name: 'Hasini',
+                        age: 17.
+                    },
+                    {
+                        name: 'Harshini',
+                        age: 12.
+                    },
+                    {
+                        name: 'Ramesh',
+                        age: 47.
+                    },
+                    {
+                        name: 'Rama sree',
+                        age: 46.
+                    }
+                ]
+                let housemates2023 = housemates2025.map(val => val.age - 2);
+                console.log(housemates2023);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output12"></p>
+            <script>
+                let res3="";
+                let val_2023 = val2025.map(age => age - 2);
+                res3 += val_2023 + "<br>";
+                let housemates_2023 = housemates2025.map(val => val.age - 2);
+                res3 += housemates_2023 + "<br>";
+                document.getElementById('output12').innerHTML = res3;
+            </script>
+        <hr>
+    
+        <!-- filter -->
+            <!-- displaying in console -->
+            <script>
+                //it will filter the elements from the main array based on some conditions... whichever element has passed the conidition, those are stored in a new array
+                let veggies = ["potato", "tomato", "beetroot", "carrot", "lemon", "onion", "lady's finder"];
+                let veg = veggies.filter(veg => veg.length <= 6);
+                console.log(veg);
+                
+                let web_series = [
+                    {
+                        name: "Breathe",
+                        series: 3,
+                        episodes: 7
+                    },
+                    {
+                        name: "Suzhal",
+                        series: 2,
+                        episodes: 8
+                    },
+                    {
+                        name: "November Story",
+                        series: 1,
+                        episodes: 10
+                    },
+                    {
+                        name: "Stranger things",
+                        series: 5,
+                        episodes: 9
+                    }
+                ]
+                let webseries1 = web_series.filter(web => web.series >= 2);
+                console.log(webseries1);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output13"></p>
+            <script>
+                let res4 = "";
+                let veg1 = veggies.filter(veg => veg.length <= 6);
+                res4 += veg1 + "<br>";
+                document.getElementById("output13").innerHTML = res4;
+            </script>
+        <hr>
+
+        <!-- reduce -->
+            <!-- displaying in console -->
+            <script>
+                //arrayname.reduce((accumulator, currentvalue) => accumulator + currentvalue);
+                let scores = [99, 100, 98, 99, 100];
+                let total = scores.reduce((sum, cur) => sum + cur);
+                console.log(total);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output14"></p>
+            <script>
+                let res5="";
+                let total1 = scores.reduce((x, y) => x + y);
+                res5 += total1 + "<br>";
+                document.getElementById('output14').innerHTML = res5;
+            </script>
+        <hr>
+
+        <!-- every -->
+            <!-- displaying in console -->
+            <script>
+                // if everything in our array matches the rule return true
+                let testResults = [35, 31, 41, 55, 79, 99, 88];
+                let answer = testResults.every(x => x > 30);
+                console.log(answer);
+
+                let animals = ["cat", "dog", "rat", "pig", "cow", "mouse"];
+                let answer1 = animals.every(animal => animal.length === 3);
+                console.log(answer1);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output15"></p>
+            <script>
+                let res6="";
+                let answer2 = testResults.every(x => x > 30);
+                res6 += answer2 + "<br>";
+                let answer3 = animals.every(animal => animal.length === 3);
+                res6 += answer3 + "<br>";
+                document.getElementById('output15').innerHTML = res6;
+            </script>
+        <hr>
+
+        <!-- events -->
+            displaying 
     </body>
 </html>
