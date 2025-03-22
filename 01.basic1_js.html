@@ -420,5 +420,157 @@
             </script>
         <hr>
 
+        <!-- events -->
+            <!-- displaying in cosole -->
+            <button id="btn1">Click me!!</button>
+            <script>
+                // target.addEventListener(event, fucntion);
+                let btn = document.getElementById('btn1');
+                function clickfun() {
+                    console.log("Clicked!");
+                }
+                function clickdb() {
+                    console.log("Double clicked");
+                }
+                function mousefun() {
+                    console.log("Mouse is over the button");
+                }
+                function mousefun2() {
+                    console.log("Mouse is exited from the button");
+                }
+                btn.addEventListener('click', clickfun);
+                btn.addEventListener('dblclick', clickdb);
+                btn.addEventListener('mouseover', mousefun);
+                btn.addEventListener('mouseout', mousefun2);
+            </script>
+        <hr>
+
+        <!-- addEventListener -->
+        <!-- removeEventListener -->
+        <!-- querySelector -->
+        <!-- Math.random() it will pass a floating point value between the range of 0 and less than 1-->
+        <!-- Math.floor() rounds down to the nearest full integer -->
+        <!-- Math.ceil() rounds up to the nearest integer -->
+        <!-- Math.round() it rounds to nearest integer up or down -->
+        <!-- these are used in many js practice pages, do check out "js_practice/6.bgcolor_change.js" to know more about working of these -->
+
+        <!-- date() -->
+            <!-- displaying in console -->
+            <script>
+                let date = new Date();
+                console.log(date);
+                console.log(date.getDate());
+                console.log(date.toISOString());
+                console.log(date.getDay());
+                console.log(date.getFullYear());
+                console.log(date.getHours());
+                console.log(date.getMinutes());
+                console.log(date.getSeconds());
+                console.log(date.getTime());
+                console.log(date.getTime()/(1000 * 60 * 60 * 24 * 365));
+                //to convert to years we use the above format, to convert to days, just remove 365
+                //this usually returns the number of milliseconds since jan 1, 1970, 00:00:00 UTC also known as Unix Epoch, this is used for date and time calculations
+
+                const bday = new Date('2025-05-29');
+                const now = new Date('2025-03-21');
+                const difference = bday - now;
+                console.log("Days left for my bday : " + difference / (1000 * 60 * 60 * 24)); // Convert to days
+                
+            </script>
+        <hr>
+        
+        <!-- setTimeout() -->
+            <!-- displaying in console -->
+            <script>
+                //It essentially calls a function or evaluates an expression after a specified number of milliseconds are passed
+                //setTimeout(function, milliseconds)
+                const time = 2000;
+                function showText() {
+                    console.log('All good!');
+                }
+                setTimeout(showText, time);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output17"></p>
+            <script>
+                let timing = document.getElementById('output17');
+                setTimeout(() => {
+                    timing.innerHTML = "All good!";
+                }, time);
+            </script>
+        <hr>
+
+        <!-- setInterval(), clearInterval() -->
+            <!-- displaying in console -->
+            <script>
+                //It essentially calls a function or evaluates an expression at specified intervals repeatedly
+                //setInterval(function, milliseconds)
+                //cleraInterval(function, time)
+                //it removes the set interval at particular time
+                const time1 = 3000;
+                function showText1() {
+                    console.log('All good!');
+                }
+                setInterval(showText1, time1);
+            </script>
+
+            <!-- displaying in the webpage -->
+            <p id="output18"></p>
+            <script>
+                let timing1 = document.getElementById('output18');
+                let count = 0;
+                let timerid = setInterval(() => {
+                    timing1.innerHTML = "All good!" + count;
+                    count++;
+                    if (count > 5) {
+                        clearInterval(timerid);
+                    }
+                }, time1);
+            </script>
+        <hr>
+
+        <!-- keys -->
+            <!-- displaying in console -->
+            <script>
+                function control(e) {
+                    if (e.key === 'ArrowLeft') {
+                        console.log('Left');
+                    }
+                    else if (e.key === 'ArrowRight') {
+                        console.log('Right');
+                    }
+                    else if (e.key === 'ArrowUp') {
+                        console.log('Up');
+                    }
+                    else if (e.key === 'ArrowDown') {
+                        console.log('Down');
+                    }
+                }
+                document.addEventListener('keydown', control);
+            </script>
+        <hr>
+
+        <!-- switch() -->
+            <!-- displaying in console -->
+            <script>
+                function control1(e) {
+                    switch(e.key) {
+                        case 'ArrowLeft':
+                            console.log('Left');
+                            break;
+                        case 'ArrowRight':
+                            console.log('Right');
+                            break;
+                        case 'ArrowUp':
+                            console.log('Up');
+                            break;
+                        case 'ArrowDown':
+                            console.log('Down');
+                            break;
+                    }
+                }
+                document.addEventListener('keydown', control1);
+            </script>
     </body>
 </html>
